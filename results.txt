@@ -1,0 +1,69 @@
+Using TensorFlow backend.
+/home/remy/.local/lib/python3.6/site-packages/cleverhans_tutorials/__init__.py:18: UserWarning: It appears that you have at least two versions of cleverhans installed, one at /home/remy/Documents and one at /home/remy/.local/lib/python3.6/site-packages. You are running the tutorial script from the former but python imported the library module from the latter. This may cause errors, for example if the tutorial version is newer than the library version and attempts to call new features.
+  " call new features." % (cur_dir, ch_dir))
+2018-12-04 09:34:34.013548: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-12-04 09:34:34.014345: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: GeForce GT 740M major: 3 minor: 5 memoryClockRate(GHz): 1.0325
+pciBusID: 0000:01:00.0
+totalMemory: 1.96GiB freeMemory: 1.73GiB
+2018-12-04 09:34:34.014379: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-04 09:34:34.350606: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-04 09:34:34.350645: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2018-12-04 09:34:34.350655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2018-12-04 09:34:34.350958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1505 MB memory) -> physical GPU (device: 0, name: GeForce GT 740M, pci bus id: 0000:01:00.0, compute capability: 3.5)
+Defined TensorFlow model graph.
+train_dir None
+Model was not loaded, training from scratch.
+2018-12-04 09:34:35.488380: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-04 09:34:35.488445: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-04 09:34:35.488460: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2018-12-04 09:34:35.488472: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2018-12-04 09:34:35.488757: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/device:GPU:0 with 1505 MB memory) -> physical GPU (device: 0, name: GeForce GT 740M, pci bus id: 0000:01:00.0, compute capability: 3.5)
+2018-12-04 09:34:35.489754: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-04 09:34:35.489798: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-04 09:34:35.489812: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2018-12-04 09:34:35.489827: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2018-12-04 09:34:35.490059: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/device:GPU:0 with 1505 MB memory) -> physical GPU (device: 0, name: GeForce GT 740M, pci bus id: 0000:01:00.0, compute capability: 3.5)
+num_devices:  1
+[INFO 2018-12-04 09:35:10,844 cleverhans] Epoch 0 took 34.847408056259155 seconds
+Test accuracy on legitimate examples: 0.9864
+[INFO 2018-12-04 09:35:45,127 cleverhans] Epoch 1 took 32.97125029563904 seconds
+Test accuracy on legitimate examples: 0.9905
+[INFO 2018-12-04 09:36:19,838 cleverhans] Epoch 2 took 33.43061399459839 seconds
+Test accuracy on legitimate examples: 0.9919
+[INFO 2018-12-04 09:36:55,386 cleverhans] Epoch 3 took 34.18863010406494 seconds
+Test accuracy on legitimate examples: 0.9924
+[INFO 2018-12-04 09:37:31,228 cleverhans] Epoch 4 took 34.469237327575684 seconds
+Test accuracy on legitimate examples: 0.9933
+[INFO 2018-12-04 09:38:05,627 cleverhans] Epoch 5 took 33.04799461364746 seconds
+Test accuracy on legitimate examples: 0.9939
+Test accuracy on adversarial examples: 0.1376
+
+Repeating the process, using adversarial training
+/home/remy/.local/lib/python3.6/site-packages/cleverhans/loss.py:41: UserWarning: callable attacks are deprecated, switch to an Attack subclass. callable attacks will not be supported after 2019-05-05.
+  warnings.warn("callable attacks are deprecated, switch to an Attack "
+2018-12-04 09:38:12.958134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-04 09:38:12.958202: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-04 09:38:12.958216: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2018-12-04 09:38:12.958230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2018-12-04 09:38:12.958425: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/device:GPU:0 with 1505 MB memory) -> physical GPU (device: 0, name: GeForce GT 740M, pci bus id: 0000:01:00.0, compute capability: 3.5)
+num_devices:  1
+[INFO 2018-12-04 09:39:43,056 cleverhans] Epoch 0 took 89.23517322540283 seconds
+Test accuracy on legitimate examples: 0.9760
+Test accuracy on adversarial examples: 0.8471
+[INFO 2018-12-04 09:41:19,793 cleverhans] Epoch 1 took 89.46107077598572 seconds
+Test accuracy on legitimate examples: 0.9852
+Test accuracy on adversarial examples: 0.8776
+[INFO 2018-12-04 09:42:57,725 cleverhans] Epoch 2 took 90.53201341629028 seconds
+Test accuracy on legitimate examples: 0.9878
+Test accuracy on adversarial examples: 0.8753
+[INFO 2018-12-04 09:44:36,722 cleverhans] Epoch 3 took 91.54645919799805 seconds
+Test accuracy on legitimate examples: 0.9884
+Test accuracy on adversarial examples: 0.9025
+[INFO 2018-12-04 09:46:15,211 cleverhans] Epoch 4 took 91.11131525039673 seconds
+Test accuracy on legitimate examples: 0.9903
+Test accuracy on adversarial examples: 0.9009
+[INFO 2018-12-04 09:47:54,893 cleverhans] Epoch 5 took 92.04348540306091 seconds
+Test accuracy on legitimate examples: 0.9910
+Test accuracy on adversarial examples: 0.9144
+
