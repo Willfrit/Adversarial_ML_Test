@@ -1,29 +1,28 @@
+"""
+This files from cleverhans tuto : https://arxiv.org/abs/1412.6572
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
+Modified for IA Seminar (UCL - Rémy VOET)
+"""
+
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import os
 
-import tensorflow as tf
-from tensorflow.python.platform import flags
-import numpy as np
 import keras
-from keras import backend
 import matplotlib.pyplot as plt
-
-
+import numpy as np
+import tensorflow as tf
 from cleverhans.attacks import FastGradientMethod
 from cleverhans.dataset import MNIST
 from cleverhans.loss import CrossEntropy
 from cleverhans.train import train
 from cleverhans.utils import AccuracyReport
-from cleverhans.utils_keras import cnn_model
-from cleverhans.utils_keras import KerasModelWrapper
+from cleverhans.utils_keras import KerasModelWrapper, cnn_model
 from cleverhans.utils_tf import model_eval
-from cleverhans.attacks import FastGradientMethod
+from keras import backend
 from keras.models import load_model
+from tensorflow.python.platform import flags
 
 import utils
 
@@ -31,7 +30,7 @@ FLAGS = flags.FLAGS
 
 FGMS_PARAMS = {'eps': 0.2, 'clip_min': 0., 'clip_max': 1.}
 
-NB_EPOCHS = 10
+NB_EPOCHS = 6
 BATCH_SIZE = 128
 LEARNING_RATE = .001
 TRAIN_DIR = 'train_dir'
@@ -137,7 +136,6 @@ def mnist_normal(train_start=0, train_end=60000, test_start=0,
         'nb_epochs': nb_epochs,
         'batch_size': batch_size,
         'learning_rate': learning_rate,
-        'train_dir': train_dir,
         'filename': filename
     }
 
@@ -148,6 +146,8 @@ def mnist_normal(train_start=0, train_end=60000, test_start=0,
 
     loss = CrossEntropy(wrap, smoothing=label_smoothing, attack=att)
     train(sess, loss, x_train, y_train, evaluate=evaluate, args=train_params)
+
+
     model.save(filename)
 
     return res_epoch_leg, res_epoch_adv
@@ -160,11 +160,11 @@ def main(argv=None):
         'batch_size':FLAGS.batch_size,
         'learning_rate':FLAGS.learning_rate,
         'train_dir':FLAGS.train_dir,
-        'filename':"mnist_nor.h5", 
+        'filename':"models/mnist_nor.h5", 
         'train_start':0,
-        'train_end':6000,
+        'train_end':600,
         'test_start':0,
-        'test_end':1000
+        'test_end':100
     }
 
     res_l_n, res_a_n = mnist_normal(**params)
@@ -174,11 +174,11 @@ def main(argv=None):
         'batch_size':FLAGS.batch_size,
         'learning_rate':FLAGS.learning_rate,
         'train_dir':FLAGS.train_dir,
-        'filename':"mnist_def.h5", 
+        'filename':"models/mnist_def.h5", 
         'train_start':0,
-        'train_end':6000,
+        'train_end':600,
         'test_start':0,
-        'test_end':1000, 
+        'test_end':100, 
         'defend': True
     }
 
@@ -187,11 +187,16 @@ def main(argv=None):
     fig = plt.figure()
     ax = plt.axes()
 
-    ax.plot(range(NB_EPOCHS), res_l_n)
-    ax.plot(range(NB_EPOCHS), res_a_n)
-    ax.plot(range(NB_EPOCHS), res_l_d)
-    ax.plot(range(NB_EPOCHS), res_a_d)
+    fig.suptitle("Accurate against legitimated test and adversarial test")
 
+    ax.set_xlabel('Number of epochs')
+    ax.set_ylabel('Accurate')
+
+    ax.plot(range(NB_EPOCHS), res_l_n, label="Test - Normal CNN")
+    ax.plot(range(NB_EPOCHS), res_a_n, label="Adversarial - Normal CNN")
+    ax.plot(range(NB_EPOCHS), res_l_d, label="Test - Defend CNN")
+    ax.plot(range(NB_EPOCHS), res_a_d, label="Adversarial - Defend CNN")
+    ax.legend()
     plt.show()
 
 if __name__ == "__main__":

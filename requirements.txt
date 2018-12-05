@@ -1,0 +1,5 @@
+tenserflow-gpu
+keras
+cleverhans==3.0.1
+numpy
+imageio
