@@ -28,7 +28,7 @@ plt.rc('figure', figsize = (12.0, 12.0))
 
 # Set the learning phase to false, the model is pre-trained.
 backend.set_learning_phase(False)
-keras_model = load_model('models/mnist_def.h5')
+keras_model = load_model('models/mnist_nor.h5')
 
 
 '''
