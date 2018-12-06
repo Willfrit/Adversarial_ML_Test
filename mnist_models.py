@@ -54,7 +54,7 @@ def load_tf():
             "'th', temporarily setting to 'tf'")
 
     # Create TF session and set as Keras backend session
-    sess = tf.Session()
+    sess = tf.Session(config=tf.ConfigProto(allow_soft_placement=True))
     keras.backend.set_session(sess)
     return report, sess
 
@@ -162,9 +162,9 @@ def main(argv=None):
         'train_dir':FLAGS.train_dir,
         'filename':"models/mnist_nor.h5", 
         'train_start':0,
-        'train_end':600,
+        'train_end':60000,
         'test_start':0,
-        'test_end':100
+        'test_end':10000
     }
 
     res_l_n, res_a_n = mnist_normal(**params)
@@ -176,9 +176,9 @@ def main(argv=None):
         'train_dir':FLAGS.train_dir,
         'filename':"models/mnist_def.h5", 
         'train_start':0,
-        'train_end':600,
+        'train_end':60000,
         'test_start':0,
-        'test_end':100, 
+        'test_end':10000, 
         'defend': True
     }
 

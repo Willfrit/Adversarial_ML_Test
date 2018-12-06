@@ -67,3 +67,85 @@ Test accuracy on adversarial examples: 0.9009
 Test accuracy on legitimate examples: 0.9910
 Test accuracy on adversarial examples: 0.9144
 
+----------- WITH all samples
+
+2018-12-06 16:34:26.980716: I T:\src\github\tensorflow\tensorflow\core\platform\cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2018-12-06 16:34:27.234991: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1405] Found device 0 with properties:
+name: GeForce GTX 960 major: 5 minor: 2 memoryClockRate(GHz): 1.2785
+pciBusID: 0000:01:00.0
+totalMemory: 4.00GiB freeMemory: 3.33GiB
+2018-12-06 16:34:27.235690: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1484] Adding visible gpu devices: 0
+2018-12-06 16:34:27.618387: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-06 16:34:27.618662: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:971]      0
+2018-12-06 16:34:27.618833: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:984] 0:   N
+2018-12-06 16:34:27.619170: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1097] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 3056 MB memory) -> physical GPU (device: 0, name: GeForce GTX 960, pci bus id: 0000:01:00.0, compute capability: 5.2)
+2018-12-06 16:34:28.848675: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1484] Adding visible gpu devices: 0
+2018-12-06 16:34:28.849026: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-06 16:34:28.849379: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:971]      0
+2018-12-06 16:34:28.849588: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:984] 0:   N
+2018-12-06 16:34:28.849870: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1097] Created TensorFlow device (/device:GPU:0 with 3056 MB memory) -> physical GPU (device: 0, name: GeForce GTX 960, pci bus id: 0000:01:00.0, compute capability: 5.2)
+2018-12-06 16:34:28.851606: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1484] Adding visible gpu devices: 0
+2018-12-06 16:34:28.851999: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-06 16:34:28.852379: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:971]      0
+2018-12-06 16:34:28.852626: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:984] 0:   N
+2018-12-06 16:34:28.852906: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1097] Created TensorFlow device (/device:GPU:0 with 3056 MB memory) -> physical GPU (device: 0, name: GeForce GTX 960, pci bus id: 0000:01:00.0, compute capability: 5.2)
+Using TensorFlow backend.
+[INFO 2018-12-06 16:34:35,794 cleverhans] Epoch 0 took 6.528890371322632 seconds
+[INFO 2018-12-06 16:34:42,798 cleverhans] Epoch 1 took 5.462389707565308 seconds
+[INFO 2018-12-06 16:34:49,677 cleverhans] Epoch 2 took 5.465411901473999 seconds
+[INFO 2018-12-06 16:34:56,547 cleverhans] Epoch 3 took 5.4543845653533936 seconds
+[INFO 2018-12-06 16:35:03,424 cleverhans] Epoch 4 took 5.468376159667969 seconds
+[INFO 2018-12-06 16:35:10,326 cleverhans] Epoch 5 took 5.488351106643677 seconds
+2018-12-06 16:35:11.774083: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1484] Adding visible gpu devices: 0
+2018-12-06 16:35:11.774440: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-06 16:35:11.774831: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:971]      0
+2018-12-06 16:35:11.775110: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:984] 0:   N
+2018-12-06 16:35:11.775398: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1097] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 3056 MB memory) -> physical GPU (device: 0, name: GeForce GTX 960, pci bus id: 0000:01:00.0, compute capability: 5.2)
+2018-12-06 16:35:12.770319: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1484] Adding visible gpu devices: 0
+2018-12-06 16:35:12.770724: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-06 16:35:12.771120: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:971]      0
+2018-12-06 16:35:12.771333: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:984] 0:   N
+2018-12-06 16:35:12.771635: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1097] Created TensorFlow device (/device:GPU:0 with 3056 MB memory) -> physical GPU (device: 0, name: GeForce GTX 960, pci bus id: 0000:01:00.0, compute capability: 5.2)
+[INFO 2018-12-06 16:35:26,238 cleverhans] Epoch 0 took 12.785802125930786 seconds
+[INFO 2018-12-06 16:35:40,493 cleverhans] Epoch 1 took 12.719979047775269 seconds
+[INFO 2018-12-06 16:35:55,187 cleverhans] Epoch 2 took 13.285465478897095 seconds
+[INFO 2018-12-06 16:36:09,579 cleverhans] Epoch 3 took 13.008078813552856 seconds
+[INFO 2018-12-06 16:36:23,893 cleverhans] Epoch 4 took 12.890053033828735 seconds
+[INFO 2018-12-06 16:36:38,311 cleverhans] Epoch 5 took 13.001847267150879 seconds
+
+Begin MNIST Tuto
+Load and set session of TF
+Get MNIST data
+Define Model (Convolutional Neural Networks)
+Training from scratch.
+num_devices:  1
+Test accuracy on legitimate examples: 0.9876
+Test accuracy on adversarial examples: 0.2004
+Test accuracy on legitimate examples: 0.9905
+Test accuracy on adversarial examples: 0.2908
+Test accuracy on legitimate examples: 0.9909
+Test accuracy on adversarial examples: 0.2494
+Test accuracy on legitimate examples: 0.9926
+Test accuracy on adversarial examples: 0.2534
+Test accuracy on legitimate examples: 0.9932
+Test accuracy on adversarial examples: 0.3009
+Test accuracy on legitimate examples: 0.9933
+Test accuracy on adversarial examples: 0.2602
+Load and set session of TF
+Get MNIST data
+Define Model (Convolutional Neural Networks)
+Training from scratch.
+num_devices:  1
+Test accuracy on legitimate examples: 0.9861
+Test accuracy on adversarial examples: 0.8854
+Test accuracy on legitimate examples: 0.9898
+Test accuracy on adversarial examples: 0.9146
+Test accuracy on legitimate examples: 0.9905
+Test accuracy on adversarial examples: 0.9229
+Test accuracy on legitimate examples: 0.9916
+Test accuracy on adversarial examples: 0.9303
+Test accuracy on legitimate examples: 0.9914
+Test accuracy on adversarial examples: 0.9375
+Test accuracy on legitimate examples: 0.9925
+Test accuracy on adversarial examples: 0.9353
+
