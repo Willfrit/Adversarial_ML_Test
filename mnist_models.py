@@ -13,7 +13,7 @@ import keras
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-from cleverhans.attacks import FastGradientMethod
+from cleverhans.attacks import FastGradientMethod, SaliencyMapMethod
 from cleverhans.dataset import MNIST
 from cleverhans.loss import CrossEntropy
 from cleverhans.train import train
@@ -108,6 +108,7 @@ def mnist_normal(train_start=0, train_end=60000, test_start=0,
     preds = model(x)
 
     fgsm = FastGradientMethod(wrap, sess=sess)
+    # fgsm = SaliencyMapMethod(wrap, sess=sess)
     
     adv_x = fgsm.generate(x, **FGMS_PARAMS)
     # Consider the attack to be constant
@@ -160,9 +161,9 @@ def main(argv=None):
         'learning_rate':FLAGS.learning_rate,
         # 'filename':"models/mnist_nor.h5", 
         'train_start':0,
-        'train_end':60000,
+        'train_end':6000,
         'test_start':0,
-        'test_end':10000
+        'test_end':1000
     }
 
     res_l_n, res_a_n = mnist_normal(**params)
@@ -171,11 +172,11 @@ def main(argv=None):
         'nb_epochs':FLAGS.nb_epochs,
         'batch_size':FLAGS.batch_size,
         'learning_rate':FLAGS.learning_rate,
-        # 'filename':"models/mnist_def.h5", 
+        # 'filename':"models/mnist_def_SM.h5", 
         'train_start':0,
-        'train_end':60000,
+        'train_end':6000,
         'test_start':0,
-        'test_end':10000, 
+        'test_end':1000, 
         'defend': True
     }
 
@@ -184,7 +185,7 @@ def main(argv=None):
     fig = plt.figure()
     ax = plt.axes()
 
-    fig.suptitle("Accurate against legitimated test and adversarial test")
+    fig.suptitle("Accurate against legitimated test and adversarial test (max pertubation=0.2)")
 
     ax.set_xlabel('Number of epochs')
     ax.set_ylabel('Accurate')

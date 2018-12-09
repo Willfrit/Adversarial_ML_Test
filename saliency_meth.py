@@ -25,6 +25,7 @@ from cleverhans.utils import AccuracyReport
 from cleverhans.utils_tf import model_eval, model_argmax
 from cleverhans.train import train
 from cleverhans_tutorials.tutorial_models import ModelBasicCNN
+from utils import * 
 
 FLAGS = flags.FLAGS
 
@@ -127,12 +128,12 @@ def mnist_tutorial_jsma(train_start=0, train_end=6000, test_start=0,
 
   # Instantiate a SaliencyMapMethod attack object
   jsma = SaliencyMapMethod(model, sess=sess)
-  jsma_params = {'theta': 1., 'gamma': 0.1,
+  jsma_params = {'theta': 1., 'gamma': 0.07,
                  'clip_min': 0., 'clip_max': 1.,
                  'y_target': None}
 
   figure = None
-
+  s_done = 0
   cur = set()
   # Loop over the samples we want to perturb into adversarial examples
   for sample_ind in xrange(0, source_samples):
@@ -140,9 +141,9 @@ def mnist_tutorial_jsma(train_start=0, train_end=6000, test_start=0,
     current_class = int(np.argmax(y_test[sample_ind]))
     target_classes = other_classes(nb_classes, current_class)
     if current_class in cur:
-        print("class already explore")
         continue
     cur.add(current_class)
+    s_done += 1
     
     print('--------------------------------------')
     print('Attacking class %i %i/%i' % (current_class, sample_ind + 1, source_samples))
@@ -181,7 +182,6 @@ def mnist_tutorial_jsma(train_start=0, train_end=6000, test_start=0,
             np.reshape(adv_x, (img_rows, img_cols, nchannels)), figure)
 
       # Add our adversarial example to our grid data
-      print(res)
       if res == 1:
         grid_viz_data[target, current_class, :, :, :] = np.reshape(
             adv_x, (img_rows, img_cols, nchannels))
@@ -193,7 +193,7 @@ def mnist_tutorial_jsma(train_start=0, train_end=6000, test_start=0,
   print('--------------------------------------')
 
   # Compute the number of adversarial examples that were successfully found
-  nb_targets_tried = ((nb_classes - 1) * source_samples)
+  nb_targets_tried = ((nb_classes - 1) * s_done)
   succ_rate = float(np.sum(results)) / nb_targets_tried
   print('Avg. rate of successful adv. examples {0:.4f}'.format(succ_rate))
   report.clean_train_adv_eval = 1. - succ_rate
@@ -214,8 +214,7 @@ def mnist_tutorial_jsma(train_start=0, train_end=6000, test_start=0,
   if viz_enabled:
     import matplotlib.pyplot as plt
     plt.close(figure)
-    _ = grid_visual(grid_viz_data)
-
+    _ = grid_visual_mnist(grid_viz_data, jsma_params['gamma'])
   return report
 
 

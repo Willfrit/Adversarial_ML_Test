@@ -29,6 +29,7 @@ plt.rc('figure', figsize = (12.0, 12.0))
 # Set the learning phase to false, the model is pre-trained.
 backend.set_learning_phase(False)
 keras_model = load_model('models/mnist_nor.h5')
+# keras_model = load_model('models/mnist_def.h5')
 
 
 '''
@@ -72,7 +73,7 @@ print("The normal validation accuracy is: {}".format(acc))
 # use it to create adversarial examples as numpy arrays.
 wrap = KerasModelWrapper(keras_model)
 fgsm = FastGradientMethod(wrap, sess=sess)
-fgsm_params = {'eps': 0.30,
+fgsm_params = {'eps': 0.20,
                'clip_min': 0.,
                'clip_max': 1.}
 
@@ -86,7 +87,7 @@ adv_acc = model_eval(sess, x, y, preds_adv, x_validation, y_validation, args=eva
 print("The adversarial validation accuracy is: {}".format(adv_acc))
 
 
-adv_x_np = fgsm.generate_np(x_validation, **fgsm_params)
+adv_x_np = fgsm.generate_np(x_validation[:10], **fgsm_params)
 
 x_sample = x_validation[0].reshape(28, 28)
 adv_x_sample = adv_x_np[0].reshape(28, 28)
